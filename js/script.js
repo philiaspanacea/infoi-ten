@@ -122,17 +122,13 @@ function filterPoke(fil) {
         return pokemon.map(itm => {
         display(itm)
         })
-
     } 
 
     if (fil === "fire") {
         const charmander = Object.values(pokemon)[0];
         console.log(charmander);
-        return charmander(itm => {
-        display(itm)
-        })
-    }
     
+    }
     
     if (fil === "water") {
         const squirtle = Object.values(pokemon)[1];
@@ -152,7 +148,6 @@ function filterPoke(fil) {
     }
 
 document.getElementById("select").addEventListener("change", (event) => {
-    // console.log(event.target.value)
     renderPoke(filterPoke(event.target.value));
 })
 
