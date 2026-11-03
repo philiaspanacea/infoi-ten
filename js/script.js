@@ -167,7 +167,6 @@ function filterPoke(fil) {
 }
 
 document.getElementById("select").addEventListener("change", (event) => {
-    // console.log(event.target.value)
     renderPoke(filterPoke(event.target.value));
 })
 
