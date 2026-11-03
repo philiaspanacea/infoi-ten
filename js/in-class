@@ -1,0 +1,52 @@
+const list = [1,2,3,4];
+const sentences = ["sentence one. ", "sentence two. ", "sentence three. "]
+
+// list[0] = 3; <-- Have to modify each individual object if using.
+
+const newList = list.map(itm =>
+    itm+2 // <-- Returning value. Adds the value to the values within the original array. itm is 1, 1 + 2 = 3. itm is 2, 2 + 2 = 4.
+) // <-- .map is an array method. Creates new array from the array referenced by changing each value inside of the original.
+
+// itm => { itm+2 return itm + 2 } <-- with curly braces, you need to use 'return'. Not using curly braces is only for when you are writing your code on one line.
+
+const sum = list.reduce((sum, item) => { // <-- always need two '',''
+    return sum + item
+})
+
+const paragraph = sentences.reduce((para, item) => { // <-- 'item', 'itm' are placeholders. Can be anything you want to call it so long as it is referenced correctly inside the method.
+    return para + item;
+})
+
+console.log(paragraph);
+
+console.log(sum)
+
+const lemons = ["green", "yellow", "blue", "brown", "yellow"];
+
+const lemonCheck = lemons.map(itm => {
+    if (itm === "yellow" || itm === "green"){
+        return "good"
+    }
+        else {
+            return "bad"
+        }
+});
+
+// const filteredLemons = lemons.filter(itm =>
+//     itm === "yellow" || itm === "green" <-- will only return yellow and green in the array 
+// )
+
+const renderedLemons = lemons.map(itm => {
+    const ele = document.createElement("div")
+    ele.innerHTML = itm;
+    ele.style.textTransform = "uppercase";
+    ele.style.fontWeight = "bold";
+    ele.style.color = itm;
+    return ele;
+})
+
+renderedLemons.forEach(itm =>{
+    document.getElementById("wrapper").appendChild(itm)
+})
+
+console.log(renderedLemons);
