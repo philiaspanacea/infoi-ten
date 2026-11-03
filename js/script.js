@@ -94,7 +94,7 @@ const pokemon = [
   { name: "Bulbasaur", type: "grass", maxHp: 105, attack: 13 }
 ];
 
-const renderedPoke = pokemon.map(itm => {
+function display(itm){
     const ele = document.createElement("div");
     const pokeName = document.createElement("h1");
     const pokeType = document.createElement("h2");
@@ -111,62 +111,48 @@ const renderedPoke = pokemon.map(itm => {
     ele.appendChild(pokeAtk);
     wrapper.appendChild(ele);
     return ele;
+}
+
+const renderedPoke = pokemon.map(itm => {
+    display(itm)
 })
 
 function filterPoke(fil) {
     if (fil === "all") {
         return pokemon.map(itm => {
-        const ele = document.createElement("div");
-        const pokeName = document.createElement("h1");
-        const pokeType = document.createElement("h2");
-        const pokeHp = document.createElement("h2");
-        const pokeAtk = document.createElement("h2");
-
-        pokeName.innerHTML = itm.name;
-        pokeType.innerHTML = itm.type;
-        pokeHp.innerHTML = itm.maxHp;
-        pokeAtk.innerHTML = itm.attack;
-        ele.appendChild(pokeName);
-        ele.appendChild(pokeType);
-        ele.appendChild(pokeHp);
-        ele.appendChild(pokeAtk);
-        wrapper.appendChild(ele);
-        return ele;
-        })
-    } else if (fil === "water"){
-        const waterType = pokemon.filter(itm => itm.type === "water");
-        console.log(waterType)
-        return pokemon.filter(itm => {
-        const ele = document.createElement("div");
-        const pokeName = document.createElement("h1");
-        const pokeType = document.createElement("h2");
-        const pokeHp = document.createElement("h2");
-        const pokeAtk = document.createElement("h2");
-
-        pokeName.innerHTML = itm.name;
-        pokeType.innerHTML = itm.type;
-        pokeHp.innerHTML = itm.maxHp;
-        pokeAtk.innerHTML = itm.attack;
-        ele.appendChild(pokeName);
-        ele.appendChild(pokeType);
-        ele.appendChild(pokeHp);
-        ele.appendChild(pokeAtk);
-        wrapper.appendChild(ele);
-        return ele;
+        display(itm)
         })
 
-        // return filteredPoke.map(itm => {
-        //     const ele = document.createElement("div")
-        //     ele.innerHTML = itm;
-        //     ele.style.textTransform = "uppercase";
-        //     ele.style.fontWeight = "bold";
-        //     ele.style.color = itm;
-        //     return ele;
-        // })
+    } 
+
+    if (fil === "fire") {
+        const charmander = Object.values(pokemon)[0];
+        console.log(charmander);
+        return charmander(itm => {
+        display(itm)
+        })
     }
-}
+    
+    
+    if (fil === "water") {
+        const squirtle = Object.values(pokemon)[1];
+        console.log(squirtle);
+    }
+
+    if (fil === "electric") {
+        const pikachu = Object.values(pokemon)[2];
+        console.log(pikachu);
+    }
+
+    if (fil === "grass") {
+        const bulbasaur = Object.values(pokemon)[3];
+        console.log(bulbasaur);
+    }
+
+    }
 
 document.getElementById("select").addEventListener("change", (event) => {
+    // console.log(event.target.value)
     renderPoke(filterPoke(event.target.value));
 })
 
